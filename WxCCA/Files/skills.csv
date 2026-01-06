@@ -1,0 +1,4 @@
+Active, Name, Service Level, Type, Description
+True, SK API XX1, 30, PROFICIENCY, API XX1 in Python
+True, SK API XX2, 60, BOOLEAN, API XX2 in Python
+True, SK API XX3, 90, TEXT, API XX3 in Python

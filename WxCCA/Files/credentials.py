@@ -1,0 +1,6 @@
+# credentials.py
+orgID = "5d0a363b-4900-408c-98e1-692d3f948a57"
+tokenCC = 'Enter Access Token Here'
+refresh_token = 'Enter Refresh Token Here'
+client_id = "Enter your Client ID"
+client_secret = "Enter your Client Secret"

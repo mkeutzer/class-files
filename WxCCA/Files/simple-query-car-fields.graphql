@@ -1,0 +1,30 @@
+{
+  #SIMPLE: Simply retrieve all task IDs
+
+  taskDetails(
+    # NOTE: from and to are mandatory arguments that take the Epoch timestamp in milliseconds
+    from: 1705761509000 #This can be set to Date.now() - (days * 24 * 60 * 60 * 1000) for lookback in days
+    to: 1706761509000 #This can be set to Date.now() in millis
+    filter: {
+    origin: { equals: "+50688743295" }
+}
+  ) {
+    tasks {
+      #Return the ID of the task
+      id
+      origin
+      destination
+      channelType
+      lastAgent {
+        id
+      }
+      lastEntryPoint {
+        id
+      }
+      lastTeam {
+        id
+      }
+      #You can add more fields below
+    }
+  }
+}
