@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant Digital Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h3 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        label {
+            font-weight: 500;
+            color: #555;
+        }
+        input[type="number"] {
+            padding: 0.6rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 150px;
+            font-size: 1rem;
+        }
+        input[readonly] {
+            background-color: #f0f0f0;
+            color: #666;
+        }
+        .output {
+            margin-top: 2rem;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.5rem;
+            color: #0078d4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>AI Assistant Digital Calculator</h3>
+        <div class="input-group">
+            <label for="sessionsPerYear">Digital Sessions Volume (per Year):</label>
+            <input type="number" id="sessionsPerYear" value="1000000" />
+        </div>
+        <div class="input-group">
+            <label for="sessionsPerUnit">Digital Sessions per Unit:</label>
+            <input type="number" id="sessionsPerUnit" value="1000" readonly />
+        </div>
+        <div class="output">Required Units: <span id="output">0</span></div>
+    </div>
+
+    <script>
+        function calculateUnits() {
+            const sessionsPerYear = parseFloat(document.getElementById("sessionsPerYear").value) || 0;
+            const sessionsPerUnit = 1000;
+            const monthlySessions = sessionsPerYear / 12;
+            const units = Math.ceil(monthlySessions / sessionsPerUnit);
+            document.getElementById("output").innerText = units;
+        }
+
+        document.getElementById("sessionsPerYear").addEventListener("input", calculateUnits);
+        calculateUnits();
+    </script>
+</body>
+</html>

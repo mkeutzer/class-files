@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Agent Voice Unit Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 2em;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 1em;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 0.5em;
+      margin-top: 0.2em;
+      box-sizing: border-box;
+    }
+    .output {
+      margin-top: 1.5em;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    #debug {
+      white-space: pre-wrap;
+      background: #eee;
+      padding: 1em;
+      margin-top: 1em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Voice Units Calculator</h1>
+    <label for="callsPerYear">Calls per Year:</label>
+    <input type="number" id="callsPerYear" value="67500">
+
+    <label for="acl">Average Call Length (minutes):</label>
+    <input type="number" id="acl" value="10">
+
+    <label for="aht">Average Handle Time (minutes):</label>
+    <input type="number" id="aht" value="7.5">
+
+    <label for="sessionDuration">Session Duration (minutes):</label>
+    <input type="number" id="sessionDuration" value="15">
+
+    <label for="sessionsPerUnit">Sessions per Unit:</label>
+    <input type="number" id="sessionsPerUnit" value="1000">
+
+    <button onclick="calculateUnits()">Calculate</button>
+
+    <div class="output">Required Units: <span id="output">0</span></div>
+    <div class="output">Final number + Overage 5%: <span id="outputOverage">0</span></div>
+
+    <div id="debug"></div>
+  </div>
+
+  <script>
+    function calculateUnits() {
+      const callsPerYear = parseFloat(document.getElementById("callsPerYear").value);
+      const acl = parseFloat(document.getElementById("acl").value);
+      const aht = parseFloat(document.getElementById("aht").value);
+      const sessionDuration = parseFloat(document.getElementById("sessionDuration").value);
+      const sessionsPerUnit = parseFloat(document.getElementById("sessionsPerUnit").value);
+
+      const monthlyCalls = callsPerYear / 12;
+      const minutesSavedPerCall = acl - aht;
+      const monthlyMinutesSaved = monthlyCalls * minutesSavedPerCall;
+      const monthlySessions = monthlyMinutesSaved / sessionDuration;
+      const units = monthlySessions / sessionsPerUnit;
+
+      const roundedUnits = Math.ceil(units);
+      const unitsWithOverage = Math.ceil(units * 1.05);
+
+      document.getElementById("output").innerText = roundedUnits;
+      document.getElementById("outputOverage").innerText = unitsWithOverage;
+
+      const debugText =
+        "Monthly Calls: " + monthlyCalls + "\n" +
+        "Minutes Saved per Call: " + minutesSavedPerCall + "\n" +
+        "Monthly Minutes Saved: " + monthlyMinutesSaved + "\n" +
+        "Monthly Sessions: " + monthlySessions + "\n" +
+        "Units (before rounding): " + units + "\n" +
+        "Rounded Units: " + roundedUnits + "\n" +
+        "Units with 5% overage (before rounding): " + (units * 1.05) + "\n" +
+        "Rounded Units with 5% overage: " + unitsWithOverage + "\n";
+
+      document.getElementById("debug").innerText = debugText;
+    }
+  </script>
+</body>
+</html>

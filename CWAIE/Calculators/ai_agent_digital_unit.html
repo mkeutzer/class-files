@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Agent Digital Unit Calculator</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 650px;
+            margin: 2rem auto;
+            background: #f8f8f8;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h3 {
+            text-align: center;
+        }
+        .formula {
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            line-height: 2.2;
+        }
+        label {
+            font-weight: bold;
+            display: inline-block;
+            width: 300px;
+        }
+        input[type="number"], select {
+            width: 100px;
+            padding: 3px;
+            margin-left: 10px;
+        }
+        .output {
+            margin-top: 2rem;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.3rem;
+        }
+        pre {
+            background: #eaeaea;
+            padding: 1rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <h3>AI Agent Digital Unit Calculator</h3>
+
+    <div class="formula" oninput="calculateUnits()">
+        <div><label>Digital Sessions per Year:</label> <input type="number" id="sessionsPerYear" value="1000000" /></div>
+        <div><label>Sessions per Unit:</label>
+            <select id="sessionsPerUnit" onchange="calculateUnits()">
+                <option value="4800">Scripted (4800)</option>
+                <option value="200">Autonomous (200)</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="output">Required Units: <span id="output">0</span></div>
+    
+
+<script>
+document.querySelector('.formula').addEventListener('input', calculateUnits);
+
+function calculateUnits() {
+  const sessionsPerYear = parseFloat(document.getElementById("sessionsPerYear").value) || 0;
+  const sessionsPerUnit = parseFloat(document.getElementById("sessionsPerUnit").value) || 1;
+
+  const monthlySessions = sessionsPerYear / 12;
+
+  let units = 0;
+  let debugText = "";
+
+  debugText += "Monthly Digital Sessions: " + monthlySessions.toFixed(2) + "\n";
+
+  if (sessionsPerUnit > 0) {
+    units = monthlySessions / sessionsPerUnit;
+    debugText += "Units before rounding: " + units.toFixed(2) + "\n";
+  } else {
+    debugText += "Invalid input: Sessions per Unit must be greater than 0.\n";
+  }
+
+  document.getElementById("output").innerText = Math.ceil(units);
+  
+}
+
+calculateUnits();
+</script>
+</body>
+</html>

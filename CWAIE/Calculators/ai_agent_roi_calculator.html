@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Agent ROI Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #f9f9f9;
+    }
+    input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 100%;
+      box-sizing: border-box;
+      font-size: 14px;
+      margin: 8px 0;
+      display: block;
+    }
+    label {
+      font-weight: bold;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .form-grid label {
+      display: flex;
+      flex-direction: column;
+    }
+    .output {
+      margin-top: 20px;
+      white-space: pre;
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #0078d4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005ea2;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 40px;
+      row-gap: 12px;
+      max-width: 800px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>AI Agent ROI Calculator</h2>
+
+  <div class="form-grid">
+    <label>Number of Agents: <input type="number" id="numAgents" value="200"></label>
+    <label>Monthly Cost per Agent ($): <input type="number" id="agentCost" value="3000"></label>
+
+    <label>Number of Supervisors: <input type="number" id="numSupervisors" value="20"></label>
+    <label>Monthly Cost per Supervisor ($): <input type="number" id="supervisorCost" value="3750"></label>
+
+    <label>Total Monthly Calls (Post-IVR): <input type="number" id="monthlyCalls" value="320000"></label>
+    <label>IVR Deflection Rate (%): <input type="number" step="0.01" id="ivrRate" value="10"></label>
+
+    <label>Productive Time per Day (hours): <input type="number" step="0.1" id="productiveTime" value="6.5"></label>
+    <label>Proactive Digital Deflection Rate (%): <input type="number" step="0.01" id="digitalDeflectRate" value="10"></label>
+
+    <div></div>
+    <label>AI Agent Handling Rate (%): <input type="number" step="0.01" id="aiHandlingRate" value="20"></label>
+  </div>
+
+  <button onclick="calculateROI()">Calculate</button>
+
+  <div class="output" id="results"></div>
+
+  <script>
+    function calculateROI() {
+      const numAgents = +document.getElementById("numAgents").value;
+      const numSupervisors = +document.getElementById("numSupervisors").value;
+      const monthlyCalls = +document.getElementById("monthlyCalls").value;
+      const agentCost = +document.getElementById("agentCost").value;
+      const supervisorCost = +document.getElementById("supervisorCost").value;
+      const ivrRate = +document.getElementById("ivrRate").value / 100;
+      const productiveHours = +document.getElementById("productiveTime").value;
+      const digitalDeflect = +document.getElementById("digitalDeflectRate").value / 100;
+      const aiHandle = +document.getElementById("aiHandlingRate").value / 100;
+      const workdays = 22;
+
+      const minutesPerDay = productiveHours * 60;
+      const aht = minutesPerDay / (monthlyCalls / numAgents / workdays);
+      const callsPerAgentPerDay = minutesPerDay / aht;
+
+      const postIVRCalls = monthlyCalls * (1- ivrRate);
+      const postPJCalls = postIVRCalls * (1 - digitalDeflect);
+      const pjCalls = postIVRCalls * digitalDeflect;
+      const aiCalls = postIVRCalls * aiHandle;
+      const humanCalls = postPJCalls - aiCalls;
+
+      const callsPerAgentPerMonth = callsPerAgentPerDay * workdays;
+
+      const originalCost = numAgents * agentCost + numSupervisors * supervisorCost;
+      const costPerOriginalContact = originalCost / (monthlyCalls * (1 - ivrRate));
+      const savings = (aiCalls + pjCalls) * costPerOriginalContact;
+      const proactiveSavings = ((postIVRCalls - postPJCalls) * (originalCost / postIVRCalls)).toFixed(2);
+
+      const formatted = `
+=== AI Agent ROI Calculator ===
+
+Step-by-step Calculations:
+
+Original Monthly Calls = ${postIVRCalls.toFixed(0)}
+AHT (calculated) = ${aht.toFixed(2)} minutes
+
+Post-Digital Deflection Calls = ${postPJCalls.toFixed(0)}
+AI Agent Handled Calls = ${aiCalls.toFixed(0)}
+Human Agent Handled Calls = ${humanCalls.toFixed(0)}
+
+Original Cost per Contact = $${costPerOriginalContact.toFixed(2)}
+<hr>
+<span style='color:green; font-weight:bold;'>Projected Savings from Proactive Journey: $${proactiveSavings}<br>Projected Savings from AI Agent Handling: $${((aiCalls * costPerOriginalContact).toFixed(2))}<br><br>Monthly Savings from AI: $${(savings.toFixed(2))}</span>
+      `;
+
+      document.getElementById("results").innerHTML = formatted
+        .replace(/\n{2,}/g, "<br><br>")
+        .replace(/\n/g, "<br>");
+    }
+  </script>
+</body>
+</html>
