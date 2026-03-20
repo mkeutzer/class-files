@@ -1,0 +1,335 @@
+{
+  "bot_type": "virtualagent",
+  "configuration": {
+    "ai_engine": "PRO",
+    "default_language": "en-US",
+    "kb_ids": [
+      "69bb8b4b9453a2a77ef41c82"
+    ],
+    "llm_agent_description": "You are a helpful, friendly and professional AI Assistant for the Order Management department of the ACME company. Your primary responsibilities include answering customer inquires about ACME products accurately and clearly, responding to general FAQs in a concise and informative manner and assisting customers with managing their orders.\n\n### INSTRUCTIONS:\nAnswer any questions from the user in a friendly and professional manner, referring to the relevant Knowledge sources as appropriate.\n\nYou will also be able to manage any existing orders as follows: Collect an Order ID Number (\"orderId\") to be able to determine what order is being referenced.\n\nThese are your available actions, once the \"orderId\" is known:\n\n1. [fetch_status] - use the \"orderId\" to fetch the status of the order.\n2. [change_date] - change the desired delivery date.\n3. [safe_location] - add or update the specified safe area for the courier to leave the package.\n4. [cancel_order] - cancels the current order by changing the value of \"deliveryStatus\" to \"Canceled\".\n\nIf an order cannot be canceled because it has already shipped, the only way the user can proceed is by contacting a human expert on the number <WxCC INBOUND NUMBER>. This is facilitated in the [cancel_order] action.",
+    "llm_model": "1.0.0",
+    "logo": "https://studio.aiagent-us1.cisco.com/static/assets/img/bot-logo/default-virtualagent.svg",
+    "timezone": "America/Denver",
+    "voice_settings": {
+      "advance_settings": {
+        "global": {
+          "delays_and_interruptions": {
+            "caller_turn_timeout": 1500,
+            "custom_no_input": 10,
+            "customer_interruption": true,
+            "eos_sensitivity": 1000,
+            "fulfilment_timeout": 30,
+            "slots_additional_delay": 800
+          },
+          "dtmf_settings": {
+            "max_length": 16,
+            "term_char": "#",
+            "timeout_between_digits": 5,
+            "turn_on_dtmf": true
+          },
+          "is_customized": true,
+          "response_settings": {
+            "custom_vocabulary": [],
+            "include_disfluencies": true,
+            "response_style": "DIRECT"
+          }
+        }
+      },
+      "voices": [
+        {
+          "displayName": "en-US-Jennifer",
+          "gender": "FEMALE",
+          "language": "English",
+          "locale": "en-US",
+          "speaking_rate": 1
+        }
+      ]
+    },
+    "welcome_message": "Hello, I´m Billy-Bob, your customer service representative at ACME Order Management department. I can answer any Surfboard, Shark or Swimsuit questions, as well as help with an order.  How can I help you today?"
+  },
+  "tools": [
+    {
+      "capability": "slot_filling",
+      "description": "Escalate the conversation to a human agent if the user asks for it.",
+      "enabled": true,
+      "fulfillment": {},
+      "id": "71230ff9c1d4e3157dc13ccde0bdf202",
+      "name": "Agent handover",
+      "slots": [],
+      "slots_view": "table",
+      "system_tool": true
+    },
+    {
+      "action_type": "fulfilment",
+      "bot_id": 62098,
+      "capability": "slot_filling_with_fulfillment",
+      "description": "Collect the orderId (if not already known) and ask the user for their new preferred delivery date. The delivery date will be used to overwrite the \"deliveryETA\" value in this action. Note that the delivery date can be changed, even if the order has already \"shipped\". The shipped status does not affect the ability to change the delivery date.\n\nThe user can provide this date in any way, using natural language, and you will be able to interpret it correctly. For example, if they say \"tomorrow\", then you will understand that to mean tomorrow's date. You will then save this value as mm/dd/yyyy.",
+      "enabled": true,
+      "fulfillment": {
+        "authentication": {
+          "service_key": "",
+          "type": "ci_bearer_token"
+        },
+        "code": "",
+        "flow_id": 83651,
+        "flow_name": "MK99 AI Agent Functions Flow",
+        "output_entities": {
+          "parameters": {
+            "properties": {},
+            "required": [],
+            "secure": [],
+            "type": "object"
+          }
+        },
+        "output_entities_format": "table",
+        "output_entities_text": "",
+        "output_entities_view": "table",
+        "service_id": "21120",
+        "service_name": "Bubba 99 Do Not Delete",
+        "type": "flow",
+        "webhook_url": "https://hooks.us.webexconnect.io/flows/83651/trigger/aiagent"
+      },
+      "id": "602ab5bbfac4c76a593192fb03b1b36f",
+      "input_entities": {
+        "parameters": {
+          "properties": {
+            "function": {
+              "description": "Function selector. For this function it will be \"change-date\"",
+              "examples": [
+                "change_date",
+                "Change Date",
+                "change date"
+              ],
+              "type": "string"
+            },
+            "new_deliveryETA": {
+              "description": "The new preferred delivery date. This will overwrite the \"deliveryETA\" value. User’s preferred date in the given format",
+              "examples": [
+                "March 23rd",
+                "March 23 2026",
+                "03/23/2026",
+                "03-23-2026",
+                "Next Monday"
+              ],
+              "format": "^(0[1-9]|1[0-2])/(0[1-9]|[12]\\d|3[01])/(\\d{4})$",
+              "type": "date"
+            },
+            "orderId": {
+              "description": "The orderId of the order to be updated.",
+              "examples": [
+                "10001"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "function",
+            "new_deliveryETA",
+            "orderId"
+          ],
+          "secure": [],
+          "type": "object"
+        }
+      },
+      "name": "change_date",
+      "slots_view": "table",
+      "system_tool": false
+    },
+    {
+      "action_type": "fulfilment",
+      "bot_id": 62098,
+      "capability": "slot_filling_with_fulfillment",
+      "description": "Collect the orderId (if not already known) and use it to update the \"safeLocation\" value.\n\nThe user can specify or change the location where they'd like the courier to leave the package when it's delivered to their home. Typical options may include the following:\n\n1. Front Door\n2. Back Door\n3. Garage Door\n4. Neighbor's House\n5. Other (please ask to specify)\n\nOffer the user these options as a numerical list so that they can also reply with a number to correlate to their preferred safe location. When a number is entered, you'll know this to refer to the desired location and you'll update the record appropriately.",
+      "enabled": true,
+      "fulfillment": {
+        "authentication": {
+          "service_key": "",
+          "type": "ci_bearer_token"
+        },
+        "code": "",
+        "flow_id": 83651,
+        "flow_name": "MK99 AI Agent Functions Flow",
+        "output_entities": {
+          "parameters": {
+            "properties": {},
+            "required": [],
+            "secure": [],
+            "type": "object"
+          }
+        },
+        "output_entities_format": "table",
+        "output_entities_text": "",
+        "output_entities_view": "table",
+        "service_id": "21120",
+        "service_name": "Bubba 99 Do Not Delete",
+        "type": "flow",
+        "webhook_url": "https://hooks.us.webexconnect.io/flows/83651/trigger/aiagent"
+      },
+      "id": "1e03aa149155856e15f6ae08a682e33a",
+      "input_entities": {
+        "parameters": {
+          "properties": {
+            "function": {
+              "description": "function selector. The value is set to \"safe_location\" when this action is called.",
+              "examples": [
+                "safe_location",
+                "safe location",
+                "Safe Location"
+              ],
+              "type": "string"
+            },
+            "new_safeLocation": {
+              "description": "The new location that the user would like to have the package left when delivered to their home. Please offer the numerical list as described in the \"action description\", along with the option to specify any safe location they would like. This will be used to replace the current \"safeLocation\".",
+              "examples": [],
+              "type": "string"
+            },
+            "orderId": {
+              "description": "The \"orderId\" is used to fetch the user's order status from the connected Order Management Platform.",
+              "examples": [
+                "10001"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "function",
+            "new_safeLocation",
+            "orderId"
+          ],
+          "secure": [],
+          "type": "object"
+        }
+      },
+      "name": "safe_location",
+      "slots_view": "table",
+      "system_tool": false
+    },
+    {
+      "action_type": "fulfilment",
+      "bot_id": 62098,
+      "capability": "slot_filling_with_fulfillment",
+      "description": "Collect the orderId (if not already known) and use it to update the \"deliveryStatus\" value. The action will first perform a check to see what the order status is (if not already known)",
+      "enabled": true,
+      "fulfillment": {
+        "authentication": {
+          "service_key": "",
+          "type": "ci_bearer_token"
+        },
+        "code": "",
+        "flow_id": 83651,
+        "flow_name": "MK99 AI Agent Functions Flow",
+        "output_entities": {
+          "parameters": {
+            "properties": {},
+            "required": [],
+            "secure": [],
+            "type": "object"
+          }
+        },
+        "output_entities_format": "table",
+        "output_entities_text": "",
+        "output_entities_view": "table",
+        "service_id": "21120",
+        "service_name": "Bubba 99 Do Not Delete",
+        "type": "flow",
+        "webhook_url": "https://hooks.us.webexconnect.io/flows/83651/trigger/aiagent"
+      },
+      "id": "2c26732f290d4c7066415ddd92f17c1c",
+      "input_entities": {
+        "parameters": {
+          "properties": {
+            "function": {
+              "description": "function selector. The value is set to \"cancel_order\" when this action is called.",
+              "examples": [
+                "cancel_order",
+                "cancel order",
+                "Cancel Order"
+              ],
+              "type": "string"
+            },
+            "orderId": {
+              "description": "The orderId of the order to be canceled",
+              "examples": [
+                "10001"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "function",
+            "orderId"
+          ],
+          "secure": [],
+          "type": "object"
+        }
+      },
+      "name": "cancel_order",
+      "slots_view": "table",
+      "system_tool": false
+    },
+    {
+      "action_type": "fulfilment",
+      "bot_id": 62098,
+      "capability": "slot_filling_with_fulfillment",
+      "description": "Using the \"orderId\", fetch the current status of the user's order.",
+      "enabled": true,
+      "fulfillment": {
+        "authentication": {
+          "service_key": "",
+          "type": "ci_bearer_token"
+        },
+        "code": "",
+        "flow_id": 83651,
+        "flow_name": "MK99 AI Agent Functions Flow",
+        "output_entities": {
+          "parameters": {
+            "properties": {},
+            "required": [],
+            "secure": [],
+            "type": "object"
+          }
+        },
+        "output_entities_format": "table",
+        "output_entities_text": "",
+        "output_entities_view": "table",
+        "service_id": "21120",
+        "service_name": "Bubba 99 Do Not Delete",
+        "type": "flow",
+        "webhook_url": "https://hooks.us.webexconnect.io/flows/83651/trigger/aiagent"
+      },
+      "id": "5ab671fc6356e1561bf734e2e26bf377",
+      "input_entities": {
+        "parameters": {
+          "properties": {
+            "function": {
+              "description": "function selector. The value is set to \"fetch_status\" when this action is called.",
+              "examples": [
+                "fetch_status",
+                "Fetch Status",
+                "fetch status"
+              ],
+              "type": "string"
+            },
+            "orderId": {
+              "description": "The \"orderId\" is used to fetch the user's order status from the connected Order Management Platform.",
+              "examples": [
+                "10001"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "function",
+            "orderId"
+          ],
+          "secure": [],
+          "type": "object"
+        }
+      },
+      "name": "fetch_status",
+      "slots_view": "table",
+      "system_tool": false
+    }
+  ],
+  "transaction_id": "82dbf56a0a0f4879abfc4e0745a38839"
+}
