@@ -1,0 +1,1488 @@
+{
+  "agent_handover_setting": {
+    "consecutive_count": {
+      "enabled": false,
+      "value": 3
+    },
+    "fallback_count": {
+      "enabled": false,
+      "value": 3
+    },
+    "handover_after_retries": false,
+    "partial_match_count": {
+      "enabled": false,
+      "value": 3
+    },
+    "response_flag": true
+  },
+  "algorithm": {
+    "algo_configuration": {
+      "article_level_match": false,
+      "automatic_wordform_expansion": true,
+      "expand_contractions": true,
+      "infer_configuration": {
+        "replace_entities_in_inference": true,
+        "spellcheck_in_inference": true
+      },
+      "n_results": 3,
+      "n_results_partial_entity": 3,
+      "n_results_related_entity": 3,
+      "remove_specialchars": false,
+      "remove_stopwords": false,
+      "slots_before_intents": true,
+      "threshold_diff_score": 0.05,
+      "threshold_min_score": 0.3,
+      "threshold_partial_entity": 0.3,
+      "threshold_related_entity": 0.6,
+      "vectorizer": "",
+      "wordforms_mode": [
+        "synonym",
+        "wordforms"
+      ]
+    },
+    "entity_recognition": false,
+    "id": "deeppavlov",
+    "is_third_party": false
+  },
+  "allow_agent_handover": false,
+  "allow_curation": true,
+  "allow_feedback": false,
+  "bot_metadata": {
+    "locale": "en_GB",
+    "timezone": "Pacific/Rarotonga"
+  },
+  "bot_type": "mlbot",
+  "curation_settings": {
+    "agent_handover": {
+      "enabled": true
+    },
+    "downvoted": {
+      "enabled": true
+    },
+    "fallback": {
+      "enabled": true,
+      "none_in_fallback_rule": {
+        "enabled": false
+      }
+    },
+    "from_session": {
+      "enabled": true
+    },
+    "low_confidence": {
+      "enabled": true,
+      "low_confidence_score": 0.4
+    },
+    "partial_match": {
+      "enabled": true
+    }
+  },
+  "default_language": "en-US",
+  "description": "Simple AI Agent to demonstrate Voice starting point and how to exchange data with a Voice Flow",
+  "entities": [
+    {
+      "auto_complete": false,
+      "color": "#9f202f",
+      "data": {
+        "length": 5
+      },
+      "name": "accountNumber",
+      "roles": [],
+      "secure": false,
+      "system_entity": false,
+      "type": "digits"
+    },
+    {
+      "auto_complete": false,
+      "color": "#cb94c6",
+      "data": {
+        "values": [
+          {
+            "synonyms": [],
+            "value": "anvil"
+          },
+          {
+            "synonyms": [],
+            "value": "rocket"
+          },
+          {
+            "synonyms": [],
+            "value": "dynomite"
+          },
+          {
+            "synonyms": [],
+            "value": "dynamite"
+          },
+          {
+            "synonyms": [],
+            "value": "invisible paint"
+          }
+        ]
+      },
+      "name": "acmeProducts",
+      "roles": [],
+      "secure": false,
+      "system_entity": false,
+      "type": "custom"
+    },
+    {
+      "auto_complete": false,
+      "color": "#eb9d70",
+      "data": {},
+      "name": "name",
+      "roles": [],
+      "secure": false,
+      "system_entity": true,
+      "type": "person"
+    },
+    {
+      "auto_complete": false,
+      "color": "#52993a",
+      "data": {},
+      "name": "productQuantity",
+      "roles": [],
+      "secure": false,
+      "system_entity": true,
+      "type": "quantity"
+    },
+    {
+      "auto_complete": false,
+      "color": "#f7be59",
+      "data": {},
+      "name": "productQuantity2",
+      "roles": [],
+      "secure": false,
+      "system_entity": true,
+      "type": "cardinal"
+    }
+  ],
+  "error_message": "",
+  "first_message": "",
+  "intents": [
+    {
+      "entities": [],
+      "intent_description": "Provide assistance and information about the bot's capabilities when the user requests help or asks what the bot can do.",
+      "intent_id": "help",
+      "name": "Help",
+      "reset_state": true,
+      "template_key": "Help message",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "utterances": [
+            {
+              "entities": [],
+              "utterance": "What can you do?"
+            },
+            {
+              "entities": [],
+              "utterance": "How can you help?"
+            },
+            {
+              "entities": [],
+              "utterance": "Help"
+            },
+            {
+              "entities": [],
+              "utterance": "What do you do?"
+            },
+            {
+              "entities": [],
+              "utterance": "Could you please help me"
+            },
+            {
+              "entities": [],
+              "utterance": "What assistance can you provide?"
+            },
+            {
+              "entities": [],
+              "utterance": "I would like some help, please."
+            },
+            {
+              "entities": [],
+              "utterance": "Would you be able to help me?"
+            },
+            {
+              "entities": [],
+              "utterance": "Could you kindly assist me?"
+            },
+            {
+              "entities": [],
+              "utterance": "Can you provide details on how you may assist?"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "entities": [],
+      "intent_description": "Handle user input that doesn't match any other defined intent, providing a fallback response to keep the conversation flowing.",
+      "intent_id": "none",
+      "name": "Default fallback intent",
+      "reset_state": true,
+      "template_key": "Fallback message",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "utterances": []
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "end_conversation": true,
+      "entities": [],
+      "entry_context": [],
+      "exit_context": [],
+      "intent_description": "Escalate the conversation to a human agent when the user requests to speak with a real person or human support.",
+      "intent_id": "agent",
+      "name": "Talk to an agent",
+      "reset_state": true,
+      "template_key": "Agent handover",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "utterance": "Can I talk to a human?"
+            },
+            {
+              "entities": [],
+              "utterance": "agent"
+            },
+            {
+              "entities": [],
+              "utterance": "human"
+            },
+            {
+              "entities": [],
+              "utterance": "Connect me to a human"
+            },
+            {
+              "entities": [],
+              "utterance": "Chat with agent"
+            },
+            {
+              "entities": [],
+              "utterance": "Can I speak with someone?"
+            },
+            {
+              "entities": [],
+              "utterance": "I need to speak to a person"
+            },
+            {
+              "entities": [],
+              "utterance": "Please transfer me to a human agent"
+            },
+            {
+              "entities": [],
+              "utterance": "I want to talk to support"
+            },
+            {
+              "entities": [],
+              "utterance": "Can you connect me to a real person?"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [
+        {
+          "counter": 3,
+          "entity_name": "acmeProducts",
+          "required": true,
+          "role_name": "",
+          "template_key": "BR1 - Products Response"
+        }
+      ],
+      "entry_context": [],
+      "exit_context": [
+        {
+          "duration": 5,
+          "name": "AI1"
+        }
+      ],
+      "intent_description": "",
+      "intent_id": "2",
+      "name": "AI1 - Acme Corp Products",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "BR1 - Products Response",
+      "update_slots": true,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Products"
+            },
+            {
+              "entities": [
+                {
+                  "end": 5,
+                  "entity_name": "acmeProducts",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "custom",
+                  "value": "Anvil"
+                }
+              ],
+              "generated": false,
+              "utterance": "Anvil"
+            },
+            {
+              "entities": [
+                {
+                  "end": 5,
+                  "entity_name": "acmeProducts",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "custom",
+                  "value": "anvil"
+                }
+              ],
+              "generated": false,
+              "utterance": "anvil"
+            },
+            {
+              "entities": [
+                {
+                  "end": 7,
+                  "entity_name": "acmeProducts",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "custom",
+                  "value": "rockets"
+                }
+              ],
+              "generated": false,
+              "utterance": "rockets"
+            },
+            {
+              "entities": [
+                {
+                  "end": 8,
+                  "entity_name": "acmeProducts",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "custom",
+                  "value": "dynomite"
+                }
+              ],
+              "generated": false,
+              "utterance": "dynomite"
+            },
+            {
+              "entities": [
+                {
+                  "end": 15,
+                  "entity_name": "acmeProducts",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "custom",
+                  "value": "Invisible Paint"
+                }
+              ],
+              "generated": false,
+              "utterance": "Invisible Paint"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Tornado Seeds"
+            },
+            {
+              "entities": [
+                {
+                  "end": 28,
+                  "entity_name": "acmeProducts",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "custom",
+                  "value": "Rocket Powered Roller Skates"
+                }
+              ],
+              "generated": false,
+              "utterance": "Rocket Powered Roller Skates"
+            },
+            {
+              "entities": [
+                {
+                  "end": 8,
+                  "entity_name": "acmeProducts",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "custom",
+                  "value": "dynamite"
+                }
+              ],
+              "generated": false,
+              "utterance": "dynamite"
+            },
+            {
+              "entities": [
+                {
+                  "end": 6,
+                  "entity_name": "acmeProducts",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "custom",
+                  "value": "rocket"
+                }
+              ],
+              "generated": false,
+              "utterance": "rocket"
+            },
+            {
+              "entities": [
+                {
+                  "end": 6,
+                  "entity_name": "acmeProducts",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "custom",
+                  "value": "anvils"
+                }
+              ],
+              "generated": false,
+              "utterance": "anvils"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [
+        {
+          "counter": 3,
+          "entity_name": "accountNumber",
+          "required": true,
+          "role_name": "",
+          "template_key": "BR2\\u002e2 - Send Account Number back to Voice Flow"
+        }
+      ],
+      "entry_context": [
+        "B2"
+      ],
+      "exit_context": [],
+      "intent_description": "",
+      "intent_id": "4",
+      "name": "BI2.1 - Collect Account Number",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "BR2\\u002e2 - Send Account Number back to Voice Flow",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "5digitAcctNumber"
+            },
+            {
+              "entities": [
+                {
+                  "end": 5,
+                  "entity_name": "accountNumber",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "digits",
+                  "value": "12345"
+                }
+              ],
+              "generated": false,
+              "utterance": "12345"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [],
+      "entry_context": [],
+      "exit_context": [],
+      "intent_description": "",
+      "intent_id": "5",
+      "name": "Corndog",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "AR - Acme Corp Opening Voice Greeting which will match an Intent",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Corndog"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "corndog"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "9543be92e07b4e018c7c5856d3638c1f",
+              "utterance": "corn dog"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "9543be92e07b4e018c7c5856d3638c1f",
+              "utterance": "corny dog"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "9543be92e07b4e018c7c5856d3638c1f",
+              "utterance": "hot dog on a stick"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "9543be92e07b4e018c7c5856d3638c1f",
+              "utterance": "fried corn snack"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "9543be92e07b4e018c7c5856d3638c1f",
+              "utterance": "kebab of corn"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [],
+      "entry_context": [],
+      "exit_context": [
+        {
+          "duration": 5,
+          "name": "B2"
+        }
+      ],
+      "intent_description": "",
+      "intent_id": "6",
+      "name": "BI2 - Order Status",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "BR2\\u002e1 - Ask Caller Account Number",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Order Status"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "0c2bd652d9b44748af1dd0774400413f",
+              "utterance": "What’s the status of my order?"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "0c2bd652d9b44748af1dd0774400413f",
+              "utterance": "Can you provide an update on my order?"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "0c2bd652d9b44748af1dd0774400413f",
+              "utterance": "I’d like to check the progress of my order."
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "0c2bd652d9b44748af1dd0774400413f",
+              "utterance": "Where is my order currently?"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "0c2bd652d9b44748af1dd0774400413f",
+              "utterance": "How can I find out the status of my order?"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [
+        {
+          "counter": 3,
+          "entity_name": "productQuantity2",
+          "required": true,
+          "role_name": "",
+          "template_key": "BR1\\u002e1 - Product and Quantity"
+        }
+      ],
+      "entry_context": [
+        "AI1"
+      ],
+      "exit_context": [],
+      "intent_description": "",
+      "intent_id": "7",
+      "name": "AI1.1 Product Quantity",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "BR1\\u002e1 - Product and Quantity",
+      "update_slots": true,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Quantity"
+            },
+            {
+              "entities": [
+                {
+                  "end": 1,
+                  "entity_name": "productQuantity2",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "cardinal",
+                  "value": "1"
+                }
+              ],
+              "generated": false,
+              "utterance": "1"
+            },
+            {
+              "entities": [
+                {
+                  "end": 1,
+                  "entity_name": "productQuantity2",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "cardinal",
+                  "value": "2"
+                }
+              ],
+              "generated": false,
+              "utterance": "2"
+            },
+            {
+              "entities": [
+                {
+                  "end": 2,
+                  "entity_name": "productQuantity2",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "cardinal",
+                  "value": "44"
+                }
+              ],
+              "generated": false,
+              "utterance": "44"
+            },
+            {
+              "entities": [
+                {
+                  "end": 3,
+                  "entity_name": "productQuantity2",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "cardinal",
+                  "value": "one"
+                }
+              ],
+              "generated": false,
+              "utterance": "one"
+            },
+            {
+              "entities": [
+                {
+                  "end": 3,
+                  "entity_name": "productQuantity2",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "cardinal",
+                  "value": "two"
+                }
+              ],
+              "generated": false,
+              "utterance": "two"
+            },
+            {
+              "entities": [
+                {
+                  "end": 2,
+                  "entity_name": "productQuantity2",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "cardinal",
+                  "value": "77"
+                }
+              ],
+              "generated": false,
+              "utterance": "77"
+            },
+            {
+              "entities": [
+                {
+                  "end": 2,
+                  "entity_name": "productQuantity2",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "cardinal",
+                  "value": "55"
+                }
+              ],
+              "generated": false,
+              "utterance": "55"
+            },
+            {
+              "entities": [
+                {
+                  "end": 6,
+                  "entity_name": "productQuantity2",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "cardinal",
+                  "value": "387654"
+                }
+              ],
+              "generated": false,
+              "utterance": "387654"
+            },
+            {
+              "entities": [
+                {
+                  "end": 2,
+                  "entity_name": "productQuantity2",
+                  "role_name": "",
+                  "start": 0,
+                  "type": "cardinal",
+                  "value": "76"
+                }
+              ],
+              "generated": false,
+              "utterance": "76"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": true,
+      "entities": [],
+      "entry_context": [],
+      "exit_context": [],
+      "intent_description": "",
+      "intent_id": "8",
+      "name": "Handled",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "Handled Response",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Handled"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "4ebb9c32e1f44d059d7c6d93b7dc0aa5",
+              "utterance": "All taken care of"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "4ebb9c32e1f44d059d7c6d93b7dc0aa5",
+              "utterance": "Sorted out"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "4ebb9c32e1f44d059d7c6d93b7dc0aa5",
+              "utterance": "Managed successfully"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "4ebb9c32e1f44d059d7c6d93b7dc0aa5",
+              "utterance": "Dealt with"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "4ebb9c32e1f44d059d7c6d93b7dc0aa5",
+              "utterance": "Everything’s under control"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "sorted"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "language": "en",
+  "languages": {
+    "en-US": true
+  },
+  "logo": "https://studio.aiagent-us1.cisco.com/static/assets/img/bot-logo/default-mlbot.svg",
+  "responses": {
+    "templates": {
+      "AR - Acme Corp Opening Voice Greeting which will match an Intent": {
+        "updated_at": 1774588237695,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": "",
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": "#"
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "You did not provide a response in a timely fashion"
+                      },
+                      "text": [
+                        "Welcome ${eventStore.name}, I'm Wyle E Kie-o-tee your Acme Corp AI Agent.  I got your name from the Voice Flow that directed me here.\n\nI can assist you with two things:  To get help with Purchasing our Products, say \"Anvils\", \"Rockets\" or \"Dynamite\".  To get help with your order status, just say \"Order Status\".\n\nHow can I help?"
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "Look at the Voice tab for this demo!"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "AR2 - Second trip into the AI Agent": {
+        "updated_at": 1774589161278,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": false,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": "",
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "Welcome back to the AI Agent ${eventStore.name}, or ${eventStore.realName}, or whatever your real name is.  Your order status is ${eventStore.deliveryStatus} and the safe location is ${eventStore.safeLocation}.\n\nThis information was passed to me from the Voice Flow.\n\nThus concludes this test, but you can always say \"corndog\" to start the AI Agent piece over again.  Otherwise, the demo is over - hang up NOW!"
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "Check out the Voice tab for this demo!"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Agent handover": {
+        "updated_at": 1774589638266,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": false,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": "",
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "event_name": "",
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "This is the Agent Handover Response you are hearing as a result of matching the Agent Intent.  Please wait while we direct you to one of our crackpot team members.\nThe Agent should also see data populated as a result of the Custom Event which should include the product and qty."
+                      ],
+                      "type": "response"
+                    },
+                    {
+                      "payload": [
+                        {
+                          "Execute_Request": {
+                            "Data": {
+                              "Params": {
+                                "product": "${entity.acmeProducts}",
+                                "qty": "${entity.productQuantity2}"
+                              }
+                            },
+                            "Event_Name": "Escalate The Call"
+                          }
+                        }
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "Please wait while I redirect you to one of our team member."
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "BR1 - Products Response": {
+        "updated_at": 1774498315753,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": "",
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "${entity.acmeProducts} is a fine product.  How many would you like?"
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "Please configure your message."
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "BR1\\u002e1 - Product and Quantity": {
+        "updated_at": 1774588465114,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": false,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": "",
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "Looks like you need ${entity.productQuantity2} of our finest ${entity.acmeProducts}.\nWe're going to need a real agent to assist you with your order.  Please say \"Agent\" to match the Agent Intent, which in turn will match the Agent Response you will hear next."
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "Please configure your message."
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "BR2\\u002e1 - Ask Caller Account Number": {
+        "updated_at": 1774588857818,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": "",
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "Please enter, or speak, your 5 digit account number.  For this demo to actually work, ensure your account number is between 1 0 0 0 1 and 1 0 0 2 0"
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "Please configure your message."
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "BR2\\u002e2 - Send Account Number back to Voice Flow": {
+        "updated_at": 1774589744475,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": false,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": "",
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "event_name": "",
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "The Account Number you provided is:  ${entity.accountNumber} \nPlease wait while we look that information up. \nThis is a voice response with a Custom Event named Account Number Event added. The call will now be returned to the voice flow where a DB Lookup using the Account number will be performed using the Custom Event Payload from this Response."
+                      ],
+                      "type": "response"
+                    },
+                    {
+                      "payload": [
+                        {
+                          "Execute_Request": {
+                            "Data": {
+                              "Params": {
+                                "acctNumber": "${entity.accountNumber}"
+                              }
+                            },
+                            "Event_Name": "Account Number Event"
+                          }
+                        }
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "Please configure your message."
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Entity suggestion": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Choose one of the following or provide your own"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Fallback message": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Sorry, I am unable to understand your message. Could you please rephrase it?"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Handled Response": {
+        "updated_at": 1774580778492,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": false,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": "",
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "Our business in this Agent is done for now, as you said Handled which matched the Handled Intent, and the Handled Response you are hearing now.\nEven though this call is \"handled\", it routes to a Queue on the voice side so you can witness the data sent along with the call via the Handled port on the Virtual Agent V2 activity.\nYou should next hear Hold Music, or an agent answering the call."
+                      ],
+                      "type": "response"
+                    },
+                    {
+                      "payload": [
+                        {
+                          "Execute_Request": {
+                            "Data": {
+                              "Params": {
+                                "product": "${entity.acmeProduct}",
+                                "qty": "${entity.productQuantity2}"
+                              }
+                            },
+                            "Event_Name": "Handled"
+                          }
+                        }
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "Please configure your message."
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Help message": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Hey, this is one of the sample intents which can be recognised. Intents are the user scenarios or flows which the bot can complete, while entities are the parameter which are required to complete and intent. Go ahead and configure a new intent to get started."
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Partial match": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Sorry, I was unable to understand your query accurately. Could you select which intent you were referring to?"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Response suggestion": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "You can also see the results for"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Welcome message": {
+        "updated_at": 1774551837608,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "This is not the Response you have configured for your Voice Call from your Voice Flow.\nSay \"Corndog\" to get to the correct response.\nIf you're trying this from the \"Preview\" tool, you will likely encounter an error as the text is expecting variable input from the voice flow that the Preview tool does not provide.\nYou can also say \"Rocket\" or \"Anvil\" to test another part of the Agent, but calling in should produce the desired results.\n"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      }
+    },
+    "workflow": {
+      "events": {
+        "First": {
+          "action": {
+            "template": "AR - Acme Corp Opening Voice Greeting which will match an Intent",
+            "type": "response"
+          }
+        },
+        "Handled": {
+          "action": {
+            "template": "Handled Response",
+            "type": "response"
+          }
+        },
+        "Reset context": {
+          "action": {
+            "type": "reset_context"
+          }
+        },
+        "Reset slots": {
+          "action": {
+            "type": "reset_slots"
+          }
+        },
+        "Second": {
+          "action": {
+            "template": "AR2 - Second trip into the AI Agent",
+            "type": "response"
+          }
+        }
+      },
+      "logic": "",
+      "static_events": [
+        "Reset slots",
+        "Reset context"
+      ],
+      "type": "workflow_event"
+    }
+  },
+  "test_cases": [
+    {
+      "callbacks": [],
+      "child_template": false,
+      "expected_language": "en-US",
+      "expected_template": "Template to match with",
+      "intent": "",
+      "is_selected": true,
+      "new_room": true,
+      "user_message": "The message to test on"
+    }
+  ],
+  "test_cases_callbacks": false,
+  "test_cases_partial_match_success": true,
+  "voice_settings": {
+    "voices": [
+      {
+        "displayName": "en-US-Henry",
+        "language": "English",
+        "locale": "en-US"
+      }
+    ]
+  },
+  "transaction_id": "972a37879ade4d439770b7af0708c0fc"
+}
