@@ -1,0 +1,21 @@
+orderId,consentComs,fName,lName,phoneNumber,email,address,timezone,productName,deliveryAddress,deliveryETA,altDate1,altDate2,safeLocation,deliveryStatus
+10001,True,Duke,Kahanamoku,3109672783,gslater@gmail.com,"6510 Beach Rd, Honolulu, HI",Pacific/Honolulu,Shark Repellant,"6510 Beach Rd, Honolulu, HI",6/26/2025,7/14/2025,7/16/2025,The Front Beach,order pending
+10002,False,Kelly,Slater,9042290668,kslater@gmail.com,"5197 Beach Rd, Honolulu, HI",Pacific/Honolulu,Gun Board,"5197 Beach Rd, Honolulu, HI",6/24/2025,7/20/2025,7/22/2025,Side of Shack,cancelled
+10003,True,Gabriel,Medina,2037201737,ghamilton@gmail.com,"5209 Beach Rd, Malibu, CA",America/Los_Angeles,Board Shorts,"5209 Beach Rd, Malibu, CA",7/2/2025,7/7/2025,7/9/2025,Side of Shack,order pending
+10004,False,Andy,Irons,3055046761,kslater@gmail.com,"593 Beach Rd, Santa Cruz, CA",America/Los_Angeles,Shark Boom Stick,"593 Beach Rd, Santa Cruz, CA",7/12/2025,7/17/2025,7/19/2025,Front Door,shipped
+10005,False,Keala,Kennelly,6193421642,kkennelly@gmail.com,"8933 Beach Rd, Portland, OR",America/Los_Angeles,Long Board,"8933 Beach Rd, Portland, OR",7/9/2025,7/14/2025,7/16/2025,Side of Shack,delivered
+10006,True,Gerry,Lopez,2031981986,lkahanamoku@gmail.com,"3713 Beach Rd, San Diego, CA",America/Los_Angeles,Bikini,"3713 Beach Rd, San Diego, CA",7/16/2025,7/21/2025,7/23/2025,Side of Shack,payment issue
+10007,False,Tom,Curren,9042578202,bslater@gmail.com,"6018 Beach Rd, Honolulu, HI",Pacific/Honolulu,Bikini,"6018 Beach Rd, Honolulu, HI",6/25/2025,7/21/2025,7/23/2025,Garage Door,order pending
+10008,True,Laird,Hamilton,4158578378,lkennelly@gmail.com,"1337 Beach Rd, Portland, ME",America/New_York,Shark Repellant,"1337 Beach Rd, Portland, ME",6/30/2025,7/7/2025,7/9/2025,Front Door,order pending
+10009,False,Mick,Fanning,2039197379,rmedina@gmail.com,"7138 Beach Rd, Jacksonville, FL",America/New_York,Gun Board,"7138 Beach Rd, Jacksonville, FL",7/6/2025,7/11/2025,7/13/2025,The Front Beach,cancelled
+10010,False,Micky,Mouse,9046423531,scurren@gmail.com,"2219 Beach Rd, Jacksonville, FL",America/New_York,Gun Board,"2219 Beach Rd, Jacksonville, FL",7/15/2025,7/20/2025,7/22/2025,Front Door,delivered
+10011,False,Bugs,Bunny,9046047339,lhamilton@gmail.com,"9803 Beach Rd, San Diego, CA",America/Los_Angeles,Long Board,"9803 Beach Rd, San Diego, CA",7/4/2025,7/9/2025,7/11/2025,The Front Beach,payment issue
+10012,True,Marvin,Martian,3105083989,lkennelly@gmail.com,"1349 Beach Rd, Honolulu, HI",Pacific/Honolulu,Shark Boom Stick,"1349 Beach Rd, Honolulu, HI",7/14/2025,7/19/2025,7/21/2025,Garage Door,order pending
+10013,True,Billy,Bob,4151746592,bcurren@gmail.com,"3107 Beach Rd, Portland, ME",America/New_York,Gun Board,"3107 Beach Rd, Portland, ME",7/15/2025,7/20/2025,7/22/2025,The Front Beach,delivered
+10014,True,Bubba,Wubba,3106214327,lkennelly@gmail.com,"438 Beach Rd, San Diego, CA",America/Los_Angeles,Shark Boom Stick,"438 Beach Rd, San Diego, CA",7/5/2025,7/10/2025,7/12/2025,Side of Shack,order pending
+10015,True,Biggs,Wipeout,8438159119,lgilmore@gmail.com,"9175 Beach Rd, Portland, ME",America/New_York,Shark Boom Stick,"9175 Beach Rd, Portland, ME",7/14/2025,7/19/2025,7/21/2025,The Front Beach,cancelled
+10016,False,Rip,Curlington,8438372304,banderson@gmail.com,"7130 Beach Rd, Santa Cruz, CA",America/Los_Angeles,Shark Boom Stick,"7130 Beach Rd, Santa Cruz, CA",7/6/2025,7/11/2025,7/13/2025,Side of Shack,cancelled
+10017,False,Fin,Diesel,6199089988,khamilton@gmail.com,"5509 Beach Rd, Honolulu, HI",Pacific/Honolulu,Shark Repellant,"5509 Beach Rd, Honolulu, HI",7/13/2025,7/18/2025,7/20/2025,Side of Shack,shipped
+10018,True,Tidey,McWaves,3058389033,kkahanamoku@gmail.com,"1635 Beach Rd, Santa Cruz, CA",America/Los_Angeles,Board Shorts,"1635 Beach Rd, Santa Cruz, CA",7/9/2025,7/14/2025,7/16/2025,Side of Shack,delivered
+10019,True,Broseph,Surfstein,2071849901,bhamilton@gmail.com,"5391 Beach Rd, Portland, ME",America/New_York,Long Board,"5391 Beach Rd, Portland, ME",7/1/2025,7/6/2025,7/8/2025,Side of Shack,order pending
+10020,True,Al,Bundy,3104660385,dkennelly@gmail.com,"9434 Beach Rd, Honolulu, HI",Pacific/Honolulu,Shark Boom Stick,"9434 Beach Rd, Honolulu, HI",6/20/2025,7/20/2025,7/22/2025,Front Door,order pending

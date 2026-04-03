@@ -1,0 +1,1842 @@
+{
+  "agent_handover_setting": {
+    "consecutive_count": {
+      "enabled": false,
+      "value": 3
+    },
+    "fallback_count": {
+      "enabled": false,
+      "value": 3
+    },
+    "handover_after_retries": false,
+    "partial_match_count": {
+      "enabled": false,
+      "value": 3
+    },
+    "response_flag": true
+  },
+  "algorithm": {
+    "algo_configuration": {
+      "article_level_match": false,
+      "automatic_wordform_expansion": true,
+      "expand_contractions": true,
+      "infer_configuration": {
+        "replace_entities_in_inference": true,
+        "spellcheck_in_inference": true
+      },
+      "n_results": 3,
+      "n_results_partial_entity": 3,
+      "n_results_related_entity": 3,
+      "remove_specialchars": false,
+      "remove_stopwords": false,
+      "slots_before_intents": true,
+      "threshold_diff_score": 0.05,
+      "threshold_min_score": 0.3,
+      "threshold_partial_entity": 0.3,
+      "threshold_related_entity": 0.6,
+      "vectorizer": "",
+      "wordforms_mode": [
+        "synonym",
+        "wordforms"
+      ]
+    },
+    "entity_recognition": false,
+    "id": "deeppavlov",
+    "is_third_party": false
+  },
+  "allow_agent_handover": false,
+  "allow_curation": true,
+  "allow_feedback": false,
+  "bot_metadata": {
+    "locale": "en_GB",
+    "timezone": "America/Los_Angeles"
+  },
+  "bot_type": "mlbot",
+  "curation_settings": {
+    "agent_handover": {
+      "enabled": true
+    },
+    "downvoted": {
+      "enabled": true
+    },
+    "fallback": {
+      "enabled": true,
+      "none_in_fallback_rule": {
+        "enabled": false
+      }
+    },
+    "from_session": {
+      "enabled": true
+    },
+    "low_confidence": {
+      "enabled": true,
+      "low_confidence_score": 0.4
+    },
+    "partial_match": {
+      "enabled": true
+    }
+  },
+  "default_language": "en-US",
+  "description": "",
+  "entities": [
+    {
+      "auto_complete": false,
+      "color": "#aeb1e5",
+      "data": {},
+      "name": "First_Name",
+      "roles": [],
+      "secure": false,
+      "system_entity": true,
+      "type": "person"
+    },
+    {
+      "auto_complete": false,
+      "color": "#c71620",
+      "data": {
+        "length": 5
+      },
+      "name": "Order_Number",
+      "roles": [],
+      "secure": false,
+      "system_entity": false,
+      "type": "digits"
+    },
+    {
+      "auto_complete": false,
+      "color": "#77f47a",
+      "data": {},
+      "name": "Hi there",
+      "roles": [],
+      "secure": false,
+      "system_entity": true,
+      "type": "person"
+    }
+  ],
+  "error_message": "",
+  "first_message": "",
+  "intents": [
+    {
+      "entities": [],
+      "intent_description": "Provide assistance and information about the bot's capabilities when the user requests help or asks what the bot can do.",
+      "intent_id": "help",
+      "name": "Help",
+      "reset_state": true,
+      "template_key": "Help message",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "utterances": [
+            {
+              "entities": [],
+              "utterance": "What can you do?"
+            },
+            {
+              "entities": [],
+              "utterance": "How can you help?"
+            },
+            {
+              "entities": [],
+              "utterance": "Help"
+            },
+            {
+              "entities": [],
+              "utterance": "What do you do?"
+            },
+            {
+              "entities": [],
+              "utterance": "Could you please help me"
+            },
+            {
+              "entities": [],
+              "utterance": "What assistance can you provide?"
+            },
+            {
+              "entities": [],
+              "utterance": "I would like some help, please."
+            },
+            {
+              "entities": [],
+              "utterance": "Would you be able to help me?"
+            },
+            {
+              "entities": [],
+              "utterance": "Could you kindly assist me?"
+            },
+            {
+              "entities": [],
+              "utterance": "Can you provide details on how you may assist?"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "entities": [],
+      "intent_description": "Handle user input that doesn't match any other defined intent, providing a fallback response to keep the conversation flowing.",
+      "intent_id": "none",
+      "name": "Default fallback intent",
+      "reset_state": true,
+      "template_key": "Fallback message",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "utterances": []
+        }
+      }
+    },
+    {
+      "entities": [],
+      "intent_description": "Acknowledge and respond appropriately when the user is ending the conversation with a farewell or departure expression.",
+      "intent_id": "good_bye",
+      "name": "Goodbye",
+      "reset_state": true,
+      "template_key": "Goodbye",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "utterances": [
+            {
+              "entities": [],
+              "utterance": "Goodbye"
+            },
+            {
+              "entities": [],
+              "utterance": "Adieu"
+            },
+            {
+              "entities": [],
+              "utterance": "Adios"
+            },
+            {
+              "entities": [],
+              "utterance": "Bye"
+            },
+            {
+              "entities": [],
+              "utterance": "Good bye"
+            },
+            {
+              "entities": [],
+              "utterance": "Catch you later"
+            },
+            {
+              "entities": [],
+              "utterance": "G2G"
+            },
+            {
+              "entities": [],
+              "utterance": "Ciao"
+            },
+            {
+              "entities": [],
+              "utterance": "CYA"
+            },
+            {
+              "entities": [],
+              "utterance": "C-ya"
+            },
+            {
+              "entities": [],
+              "utterance": "Fare thee well"
+            },
+            {
+              "entities": [],
+              "utterance": "Catch ya later"
+            },
+            {
+              "entities": [],
+              "utterance": "gotta go"
+            },
+            {
+              "entities": [],
+              "utterance": "See you later"
+            },
+            {
+              "entities": [],
+              "utterance": "See ya later"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "end_conversation": false,
+      "entities": [],
+      "entry_context": [],
+      "exit_context": [],
+      "intent_description": "Respond appropriately when the user initiates conversation with a greeting or salutation, including hellos, time-based greetings, and casual farewells.",
+      "intent_id": "greetings",
+      "name": "Greetings",
+      "reset_state": true,
+      "template_key": "Welcome message",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "utterance": "Hello"
+            },
+            {
+              "entities": [],
+              "utterance": "Hello there"
+            },
+            {
+              "entities": [],
+              "utterance": "Ahoy"
+            },
+            {
+              "entities": [],
+              "utterance": "Hey pal"
+            },
+            {
+              "entities": [],
+              "utterance": "Greetings and salutations"
+            },
+            {
+              "entities": [],
+              "utterance": "G'day"
+            },
+            {
+              "entities": [],
+              "utterance": "Good day"
+            },
+            {
+              "entities": [],
+              "utterance": "Heya"
+            },
+            {
+              "entities": [],
+              "utterance": "Well hey there"
+            },
+            {
+              "entities": [],
+              "utterance": "Yo dude"
+            },
+            {
+              "entities": [],
+              "utterance": "Hey-hey"
+            },
+            {
+              "entities": [],
+              "utterance": "Hi"
+            },
+            {
+              "entities": [],
+              "utterance": "Hi there!"
+            },
+            {
+              "entities": [],
+              "utterance": "Hiya"
+            },
+            {
+              "entities": [],
+              "utterance": "Howdy"
+            },
+            {
+              "entities": [],
+              "utterance": "evenin"
+            },
+            {
+              "entities": [],
+              "utterance": "Good evening"
+            },
+            {
+              "entities": [],
+              "utterance": "Good morning sunshine"
+            },
+            {
+              "entities": [],
+              "utterance": "Mornin'"
+            },
+            {
+              "entities": [],
+              "utterance": "Good morning"
+            },
+            {
+              "entities": [],
+              "utterance": "Good night"
+            },
+            {
+              "entities": [],
+              "utterance": "G'night"
+            },
+            {
+              "entities": [],
+              "utterance": "Sweet dreams"
+            },
+            {
+              "entities": [],
+              "utterance": "Nighty night"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Hi there"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "entities": [],
+      "intent_description": "Handle user feedback indicating dissatisfaction with the bot's response, including complaints about inaccuracy, irrelevance, confusion, or general unhelpfulness.",
+      "intent_id": "not_helpful",
+      "name": "Not helpful",
+      "reset_state": true,
+      "template_key": "Not helpful",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "utterances": [
+            {
+              "entities": [],
+              "utterance": "That was unhelpful"
+            },
+            {
+              "entities": [],
+              "utterance": "That's inaccurate"
+            },
+            {
+              "entities": [],
+              "utterance": "That was a terrible answer"
+            },
+            {
+              "entities": [],
+              "utterance": "That wasn't True"
+            },
+            {
+              "entities": [],
+              "utterance": "Not what I asked"
+            },
+            {
+              "entities": [],
+              "utterance": "That's not a good answer"
+            },
+            {
+              "entities": [],
+              "utterance": "That's not relevant"
+            },
+            {
+              "entities": [],
+              "utterance": "Not True"
+            },
+            {
+              "entities": [],
+              "utterance": "Not even close"
+            },
+            {
+              "entities": [],
+              "utterance": "That was a stupid answer"
+            },
+            {
+              "entities": [],
+              "utterance": "Inaccurate"
+            },
+            {
+              "entities": [],
+              "utterance": "False"
+            },
+            {
+              "entities": [],
+              "utterance": "That's wrong"
+            },
+            {
+              "entities": [],
+              "utterance": "Answers are not very good"
+            },
+            {
+              "entities": [],
+              "utterance": "Answers are irrelevant"
+            },
+            {
+              "entities": [],
+              "utterance": "Responses aren't relevant"
+            },
+            {
+              "entities": [],
+              "utterance": "Responses are unTrue"
+            },
+            {
+              "entities": [],
+              "utterance": "Responses are dumb"
+            },
+            {
+              "entities": [],
+              "utterance": "Responses are stupid"
+            },
+            {
+              "entities": [],
+              "utterance": "Didn't answer my question"
+            },
+            {
+              "entities": [],
+              "utterance": "Wrong answer"
+            },
+            {
+              "entities": [],
+              "utterance": "Explain yourself"
+            },
+            {
+              "entities": [],
+              "utterance": "I'm confused"
+            },
+            {
+              "entities": [],
+              "utterance": "I don't understand"
+            },
+            {
+              "entities": [],
+              "utterance": "I don't get it"
+            },
+            {
+              "entities": [],
+              "utterance": "That made no sense"
+            },
+            {
+              "entities": [],
+              "utterance": "That didn't make sense"
+            },
+            {
+              "entities": [],
+              "utterance": "You are confusing me"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "entities": [],
+      "intent_description": "Acknowledge and respond appropriately when the user expresses gratitude or thanks.",
+      "intent_id": "thank_you",
+      "name": "Thank you",
+      "reset_state": true,
+      "template_key": "Thank you",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "utterances": [
+            {
+              "entities": [],
+              "utterance": "Thank you"
+            },
+            {
+              "entities": [],
+              "utterance": "Many thanks"
+            },
+            {
+              "entities": [],
+              "utterance": "Kthx"
+            },
+            {
+              "entities": [],
+              "utterance": "I appreciate that"
+            },
+            {
+              "entities": [],
+              "utterance": "Thx"
+            },
+            {
+              "entities": [],
+              "utterance": "Thnx"
+            },
+            {
+              "entities": [],
+              "utterance": "Thanks bot"
+            },
+            {
+              "entities": [],
+              "utterance": "Thanks a lot"
+            },
+            {
+              "entities": [],
+              "utterance": "Thank you"
+            },
+            {
+              "entities": [],
+              "utterance": "Thanks"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "end_conversation": true,
+      "entities": [],
+      "intent_description": "Escalate the conversation to a human agent when the user requests to speak with a real person or human support.",
+      "intent_id": "agent",
+      "name": "Talk to an agent",
+      "reset_state": true,
+      "template_key": "Agent handover",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "utterances": [
+            {
+              "entities": [],
+              "utterance": "Can I talk to a human?"
+            },
+            {
+              "entities": [],
+              "utterance": "agent"
+            },
+            {
+              "entities": [],
+              "utterance": "human"
+            },
+            {
+              "entities": [],
+              "utterance": "Connect me to a human"
+            },
+            {
+              "entities": [],
+              "utterance": "Chat with agent"
+            },
+            {
+              "entities": [],
+              "utterance": "Can I speak with someone?"
+            },
+            {
+              "entities": [],
+              "utterance": "I need to speak to a person"
+            },
+            {
+              "entities": [],
+              "utterance": "Please transfer me to a human agent"
+            },
+            {
+              "entities": [],
+              "utterance": "I want to talk to support"
+            },
+            {
+              "entities": [],
+              "utterance": "Can you connect me to a real person?"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [
+        {
+          "counter": 3,
+          "entity_name": "First_Name",
+          "required": false,
+          "role_name": "",
+          "template_key": "Fallback message"
+        },
+        {
+          "counter": 3,
+          "entity_name": "Order_Number",
+          "required": true,
+          "role_name": "",
+          "template_key": "Order_Number"
+        }
+      ],
+      "entry_context": [],
+      "exit_context": [],
+      "intent_description": "Track_Order",
+      "intent_id": "1",
+      "name": "Track_Order",
+      "reset_state": true,
+      "restart_template": "",
+      "template_key": "Track_Order",
+      "update_slots": true,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "4"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Four"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "four"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "can you please track my order"
+            },
+            {
+              "entities": [
+                {
+                  "end": 15,
+                  "entity_name": "First_Name",
+                  "role_name": "",
+                  "start": 11,
+                  "type": "person",
+                  "value": "John"
+                },
+                {
+                  "end": 44,
+                  "entity_name": "Order_Number",
+                  "role_name": "",
+                  "start": 39,
+                  "type": "digits",
+                  "value": "12345"
+                }
+              ],
+              "generated": false,
+              "utterance": "my name is John and my order number is 12345, can you get my order status"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "7c04f01af3f24816b2300c8c7ef213c4",
+              "utterance": "Can you help me find the status of my order?"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "7c04f01af3f24816b2300c8c7ef213c4",
+              "utterance": "I'd like to know where my shipment is, please."
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "7c04f01af3f24816b2300c8c7ef213c4",
+              "utterance": "What’s the current status of my delivery?"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "7c04f01af3f24816b2300c8c7ef213c4",
+              "utterance": "Can you check on my order for me?"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "7c04f01af3f24816b2300c8c7ef213c4",
+              "utterance": "I need assistance tracking my package, please."
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "7c04f01af3f24816b2300c8c7ef213c4",
+              "utterance": "Could you provide an update on my order status?"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "7c04f01af3f24816b2300c8c7ef213c4",
+              "utterance": "I'm trying to locate my order, can you assist?"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "7c04f01af3f24816b2300c8c7ef213c4",
+              "utterance": "Is there any way to see where my order is at the moment?"
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "7c04f01af3f24816b2300c8c7ef213c4",
+              "utterance": "Please help me track the delivery of my recent purchase."
+            },
+            {
+              "entities": [],
+              "generated": true,
+              "transaction_id": "7c04f01af3f24816b2300c8c7ef213c4",
+              "utterance": "Can you tell me the whereabouts of my order right now?"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [],
+      "entry_context": [],
+      "exit_context": [
+        {
+          "duration": 5,
+          "name": "surfboard"
+        }
+      ],
+      "intent_description": "",
+      "intent_id": "2",
+      "name": "surfboard",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "surfboardsubmenu",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "1"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "One"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "one"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [],
+      "entry_context": [],
+      "exit_context": [
+        {
+          "duration": 5,
+          "name": "swimsuit"
+        }
+      ],
+      "intent_description": "",
+      "intent_id": "3",
+      "name": "swimsuit",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "swimsuitsubmenu",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "2"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Two"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "two"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "swimsuit"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "bikini"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "trunks"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [],
+      "entry_context": [],
+      "exit_context": [],
+      "intent_description": "",
+      "intent_id": "4",
+      "name": "sharkrepellant",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "Agent handover",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "3"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Three"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "three"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "shark"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "chum"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "great white"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [],
+      "entry_context": [
+        "surfboard"
+      ],
+      "exit_context": [],
+      "intent_description": "",
+      "intent_id": "5",
+      "name": "surfboardsubmenu_1",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "surfboardsubmenusales",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "1"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "one"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "One"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [],
+      "entry_context": [
+        "surfboard"
+      ],
+      "exit_context": [],
+      "intent_description": "",
+      "intent_id": "6",
+      "name": "surfboardsubmenu_2",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "surfboardsubmenurentals",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "2"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Two"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "two"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [],
+      "entry_context": [
+        "swimsuit"
+      ],
+      "exit_context": [],
+      "intent_description": "",
+      "intent_id": "7",
+      "name": "swimsuitsubmenu_1",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "swimsuitsubmenufemale",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "1"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "One"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "ne"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "bikiki"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "auto_complete_entities": false,
+      "description": "",
+      "end_conversation": false,
+      "entities": [],
+      "entry_context": [
+        "swimsuit"
+      ],
+      "exit_context": [],
+      "intent_description": "",
+      "intent_id": "8",
+      "name": "swimsuitsubmenu_2",
+      "reset_state": false,
+      "restart_template": "",
+      "template_key": "swimsuitsubmenumale",
+      "update_slots": false,
+      "variants": {
+        "en-US": {
+          "are_utterances_harmful": false,
+          "utterances": [
+            {
+              "entities": [],
+              "generated": false,
+              "transaction_id": "",
+              "utterance": "2"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "two"
+            },
+            {
+              "entities": [],
+              "generated": false,
+              "utterance": "Two"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "language": "en",
+  "languages": {
+    "en-US": true
+  },
+  "logo": "https://studio.aiagent-us1.cisco.com/static/assets/img/bot-logo/default-mlbot.svg",
+  "responses": {
+    "templates": {
+      "Agent handover": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Please wait while I redirect you to one of our team member."
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Entity suggestion": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Choose one of the following or provide your own"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Fallback message": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Sorry, I am unable to understand your message. Could you please rephrase it?"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Goodbye": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Goodbye and take care!"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Greetings": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Hello there."
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Help message": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Hey, this is one of the sample intents which can be recognised. Intents are the user scenarios or flows which the bot can complete, while entities are the parameter which are required to complete and intent. Go ahead and configure a new intent to get started."
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Not helpful": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Sorry,  I hear that wasn't able to help you. Please try asking a different question."
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Order_Number": {
+        "updated_at": 1774624593463,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": 5,
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "Please enter or say your 5 digit order number."
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "Please provide your five digit order number"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Partial match": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "Sorry, I was unable to understand your query accurately. Could you select which intent you were referring to?"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Response suggestion": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "You can also see the results for"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Thank you": {
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "web": [
+                    {
+                      "text": [
+                        "You're welcome, take care!"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Track_Order": {
+        "updated_at": 1774474487739,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": "",
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "Please wait while I find your order status"
+                      ],
+                      "type": "response"
+                    },
+                    {
+                      "payload": [
+                        {
+                          "Execute_Request": {
+                            "Data": {
+                              "Params": {
+                                "Order_Number": "${entity.Order_Number}"
+                              }
+                            },
+                            "Event_Name": "Order_Details"
+                          }
+                        }
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "please wait while I check your order status"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "Welcome message": {
+        "updated_at": 1774646804414,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": 1,
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "Hello surfer dude, for surfboards, press or say 1. For swimsuits, press or say 2. For shark repellent, press or say 3. To track an order, press or say 4. "
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "Welcome to the Super surf shack!  Please select one of hte following options:\nRadical surfboards\nsmoking hot swimsuits \nshark repellant \ntrack an order"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "surfboardsubmenu": {
+        "updated_at": 1774475284348,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": 1,
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "for surfboard sales, press or say one, for surfboard rentals, press or say two"
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "For sales, enter 1, for rentals, enter two"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "surfboardsubmenurentals": {
+        "updated_at": 1774475852368,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": 5,
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "I am sorry you are having issues"
+                      },
+                      "text": [
+                        "One moment"
+                      ],
+                      "type": "response"
+                    },
+                    {
+                      "payload": [
+                        {
+                          "Execute_Request": {
+                            "Data": {
+                              "Params": {
+                                "SurfboardSubMenu": "${nlp.text}"
+                              }
+                            },
+                            "Event_Name": "surfboardsubmenuresp"
+                          }
+                        }
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "One moment"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "surfboardsubmenusales": {
+        "updated_at": 1774475719154,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": 5,
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "I am sorry you are having issues"
+                      },
+                      "text": [
+                        "One moment"
+                      ],
+                      "type": "response"
+                    },
+                    {
+                      "payload": [
+                        {
+                          "Execute_Request": {
+                            "Data": {
+                              "Params": {
+                                "SurfboardSubMenu": "${nlp.text}"
+                              }
+                            },
+                            "Event_Name": "surfboardsubmenuresp"
+                          }
+                        }
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "One moment"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "swimsuitsubmenu": {
+        "updated_at": 1774475402195,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": 1,
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "Please configure your timeout response"
+                      },
+                      "text": [
+                        "For women's swimwear, press or say one, for men's swimwear, press or say 2\n"
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "For women's swimwear, enter 1 for men's swimwear, enter 2"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "swimsuitsubmenufemale": {
+        "updated_at": 1774475970632,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": 5,
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "I am sorry you are having issues"
+                      },
+                      "text": [
+                        "One moment"
+                      ],
+                      "type": "response"
+                    },
+                    {
+                      "payload": [
+                        {
+                          "Execute_Request": {
+                            "Data": {
+                              "Params": {
+                                "SwimsuitSubMenu": "${nlp.text}"
+                              }
+                            },
+                            "Event_Name": "swimsuitsubmenuresp"
+                          }
+                        }
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "One moment"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      },
+      "swimsuitsubmenumale": {
+        "updated_at": 1774555219684,
+        "variants": {
+          "en-US": {
+            "logic": "",
+            "paths": {
+              "configurable": [],
+              "default": {
+                "actions": {
+                  "voice": [
+                    {
+                      "speech_settings": {
+                        "allow_dtmf": true,
+                        "barge_in": true,
+                        "dtmf_config": {
+                          "allow_voice": true,
+                          "dtmf_length": "",
+                          "inter_digit_timeout_in_ms": 5000,
+                          "termchar": ""
+                        },
+                        "timeout_in_ms": 10000,
+                        "timeout_response": "I am sorry you are having issues"
+                      },
+                      "text": [
+                        "One moment"
+                      ],
+                      "type": "response"
+                    },
+                    {
+                      "payload": [
+                        {
+                          "Execute_Request": {
+                            "Data": {
+                              "Params": {
+                                "SwimsuitSubMenu": "${nlp.text}"
+                              }
+                            },
+                            "Event_Name": "swimsuitsubmenuresp"
+                          }
+                        }
+                      ],
+                      "type": "response"
+                    }
+                  ],
+                  "web": [
+                    {
+                      "text": [
+                        "One moment"
+                      ],
+                      "type": "response"
+                    }
+                  ]
+                }
+              }
+            },
+            "response_type": "paths",
+            "send_response_in_default_language": false
+          }
+        }
+      }
+    },
+    "workflow": {
+      "events": {
+        "Reset context": {
+          "action": {
+            "type": "reset_context"
+          }
+        },
+        "Reset slots": {
+          "action": {
+            "type": "reset_slots"
+          }
+        }
+      },
+      "logic": "",
+      "static_events": [
+        "Reset slots",
+        "Reset context"
+      ],
+      "type": "workflow_event"
+    }
+  },
+  "test_cases": [
+    {
+      "callbacks": [],
+      "child_template": false,
+      "expected_language": "en-US",
+      "expected_template": "Template to match with",
+      "intent": "",
+      "is_selected": true,
+      "new_room": true,
+      "user_message": "The message to test on"
+    }
+  ],
+  "test_cases_callbacks": false,
+  "test_cases_partial_match_success": true,
+  "voice_settings": {
+    "voices": []
+  },
+  "transaction_id": "f4a1d49b3eab4cfd8cd7c8f4a3b86bc5"
+}

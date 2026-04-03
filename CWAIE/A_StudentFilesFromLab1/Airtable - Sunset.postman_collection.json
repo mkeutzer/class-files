@@ -1,0 +1,178 @@
+{
+	"info": {
+		"_postman_id": "85d70a1f-f6f0-4cc0-9178-db5d034c1e81",
+		"name": "Airtable - Sunset",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8574189",
+		"_collection_link": "https://orange-moon-538770.postman.co/workspace/AWXCC-and-CWXCC~f01e571d-6f00-4c84-aa7e-b29537906b82/collection/8574189-85d70a1f-f6f0-4cc0-9178-db5d034c1e81?action=share&source=collection_link&creator=8574189"
+	},
+	"item": [
+		{
+			"name": "Get Order",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{bearer token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.airtable.com/v0/{{base-id}}/{{table-id}}?maxRecords=3&view=Grid%20view",
+					"protocol": "https",
+					"host": [
+						"api",
+						"airtable",
+						"com"
+					],
+					"path": [
+						"v0",
+						"{{base-id}}",
+						"{{table-id}}"
+					],
+					"query": [
+						{
+							"key": "maxRecords",
+							"value": "3"
+						},
+						{
+							"key": "view",
+							"value": "Grid%20view"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fields\": {\n        \"orderId\": \"41223335467\",\n        \"consentComs\": \"True\",\n        \"fName\": \"John\",\n        \"lName\": \"Doe\",\n        \"phoneNumber\": \"41223335467\",\n        \"email\": \"jdoe@cisco.com\",\n        \"address\": \"5265 Nowhere, New York City\",\n        \"timezone\": \"Europe/Madrid\",\n        \"productName\": \"productname\",\n        \"deliveryAddress\": \"5265 Nowhere, New York City\",\n        \"deliveryETA\": \"2025-06-30\",\n        \"altDate1\": \"2025-07-05\",\n        \"altDate2\": \"2025-07-06\",\n        \"safeLocation\": \"Front Door\",\n        \"deliveryStatus\": \"\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.airtable.com/v0/{{base-id}}/{{table-id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"airtable",
+						"com"
+					],
+					"path": [
+						"v0",
+						"{{base-id}}",
+						"{{table-id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modify Order",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fields\": {\n        \"deliveryStatus\": \"not shipped\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.airtable.com/v0/{{base-id}}/{{table-id}}/{{record-id}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"airtable",
+						"com"
+					],
+					"path": [
+						"v0",
+						"{{base-id}}",
+						"{{table-id}}",
+						"{{record-id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{bearer-token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base-id",
+			"value": "appAXZxN7Tk0QxK0U",
+			"type": "string"
+		},
+		{
+			"key": "table-id",
+			"value": "tbl2k27axGVoVC3de",
+			"type": "string"
+		},
+		{
+			"key": "bearer-token",
+			"value": "patvHcCcBp9ADvbtI.2be79a14725cb9b7c5e10534a28fff622798f7c13598b77d20dbdcfd8c5cdcdb",
+			"type": "string"
+		},
+		{
+			"key": "orderId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
